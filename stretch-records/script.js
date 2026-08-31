@@ -36,11 +36,15 @@ function renderCards(list) {
   }
 }
 
+cardArea.textContent = 'Loading...';
+
+setTimeout(() => {
+cardArea.textContent = "";
 fetch('artists.json')
   .then(response => response.json())
   .then(artists => {
     renderCards(artists);
-  });
+  })}, 1500);
 
 // Shuffle: pick a random artist and feature them.
 const shuffleButton = document.querySelector('.shuffle');
